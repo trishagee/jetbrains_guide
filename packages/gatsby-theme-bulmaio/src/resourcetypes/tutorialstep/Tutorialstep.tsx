@@ -67,7 +67,7 @@ export const Tutorialstep: React.FC<TutorialstepProps> = (
 
     // Video
     const {longVideo} = frontmatter;
-    const videoOptions = {
+    const videoOptions = longVideo ? {
         controls: true,
         poster: longVideo.poster.publicURL,
         fill: true,
@@ -77,7 +77,7 @@ export const Tutorialstep: React.FC<TutorialstepProps> = (
                 type: 'video/youtube'
             }
         ]
-    };
+    }: null;
 
     // Sidebar
     const steps: Step[] = tutorialItems.map((item: any) => (
