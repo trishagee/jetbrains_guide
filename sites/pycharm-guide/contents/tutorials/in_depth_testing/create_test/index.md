@@ -25,63 +25,31 @@ create your tests almost automatically:
 
 2. In the **Create test** dialog, specify the path to the directory with the tests, alter or leave intact 
 the suggested test name and test class name, and select the test method (`test_accelerate` in this example). 
- ![Create test dialog](screenshots/test_create_test_dialog.png)
-Click **OK** to complete the task.
+
+    ![Create test dialog](screenshots/test_create_test_dialog.png)
+
+    Click **OK** to complete the task.
 
 3. Now, inspect the newly created ``test_unittest_car.py`` file.
 
-```python
-from unittest import TestCase
+    `embed:tutorials/in_depth_testing/create_test/test_unittest_car.py` 
 
+4. Let us replace it with some testing logic: 
 
-class TestCar(TestCase):
-    def test_accelerate(self):
-        self.fail()
-```
+    `embed:tutorials/in_depth_testing/create_test/test_unittest_car2.py` 
 
-4. Let us replace it with some testing logic:
-
-```python
-from unittest import TestCase
-from Car import Car
-car = Car()
- 
- 
-class TestCar(TestCase):
-    def test_accelerate(self):
-        car.speed = 50
-        car.accelerate()
-        self.assertEqual(car.speed, 55)
-```
-
-This test checks if `speed` equals 55 after the `accelerate` function is executed.
-Note that when you start typing `car.`, PyCharm provides the completion list with the 
-available parameters and functions of the `Car` class.
+    This test checks if `speed` equals 55 after the `accelerate` function is executed.
+    Note that when you start typing `car.`, PyCharm provides the completion list with the 
+    available parameters and functions of the `Car` class.
 
 ![Code completion](screenshots/test_code_completion.png)
 
 5. Now enhance the test a bit and create yet another function to test the `brake` function.
 
-```python
-from unittest import TestCase
-from Car import Car
-car = Car()
- 
- 
-class TestCar(TestCase):
-    def test_accelerate(self):
-        car.speed = 50
-        car.accelerate()
-        self.assertEqual(car.speed, 55)
-        
-    def test_brake(self):
-        car.speed = 10
-        car.brake()
-        self.assertEqual(car.speed, 15)
-```
+    `embed:tutorials/in_depth_testing/create_test/test_unittest_car3.py` 
 
 6. To verify that the `test_brake` function tests the `Car.brake` function, let's jump to the test subject.
 Place the caret on the line `def test.brake(self):`, right-click, and select **Go to|Test Subject**.
-Ensure that you're navigated to the proper place of the `Car.py` file.
+Ensure that you're navigated to the proper place of the `car.py` file.
 
 Now you are ready to execute the newly created tests.
